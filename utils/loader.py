@@ -134,46 +134,84 @@ def download_pipeline(city):
 # Prediction Loader
 # -----------------------------
 
+# def load_prediction(city):
+
+#     city = city.lower()
+
+
+#     df_path = f"model/{city}/df.pkl"
+
+
+#     pipeline_path = f"model/{city}/pipeline.pkl"
+
+
+
+#     if not os.path.exists(df_path):
+
+#         raise FileNotFoundError(
+#             f"{df_path} missing"
+#         )
+
+
+
+#     with open(
+#         df_path,
+#         "rb"
+#     ) as f:
+
+#         df = pickle.load(f)
+
+
+
+#     download_pipeline(city)
+
+
+
+#     pipeline = joblib.load(
+#         pipeline_path
+#     )
+
+
+#     return df, pipeline
 def load_prediction(city):
 
     city = city.lower()
 
-
     df_path = f"model/{city}/df.pkl"
-
-
     pipeline_path = f"model/{city}/pipeline.pkl"
 
+    print("=" * 50)
+    print("Loading city:", city)
+    print("DF Path:", df_path)
+    print("Pipeline Path:", pipeline_path)
 
+    print("DF Exists:", os.path.exists(df_path))
+    print("Pipeline Exists Before Download:", os.path.exists(pipeline_path))
 
     if not os.path.exists(df_path):
+        raise FileNotFoundError(f"{df_path} missing")
 
-        raise FileNotFoundError(
-            f"{df_path} missing"
-        )
-
-
-
-    with open(
-        df_path,
-        "rb"
-    ) as f:
-
+    with open(df_path, "rb") as f:
         df = pickle.load(f)
 
-
+    print("DF Loaded Successfully")
+    print("DF Shape:", df.shape)
 
     download_pipeline(city)
 
+    print("Pipeline Exists After Download:", os.path.exists(pipeline_path))
 
-
-    pipeline = joblib.load(
-        pipeline_path
-    )
-
+    try:
+        pipeline = joblib.load(pipeline_path)
+        print("Pipeline Loaded Successfully")
+        print(type(pipeline))
+    except Exception as e:
+        print("Pipeline Loading Failed")
+        print(type(e).__name__)
+        print(e)
+        raise
 
     return df, pipeline
-
 
 
 
