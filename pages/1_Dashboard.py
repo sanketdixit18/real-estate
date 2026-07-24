@@ -164,13 +164,13 @@ df, pipeline = load_prediction(city)
 # Optional Modules
 # -------------------------
 
-# analytics_df, wordcloud_df = load_analytics(city)
+analytics_df, wordcloud_df = load_analytics(city)
 
 
-# recommend_df, similarity = load_recommendation(city)
+recommend_df, similarity = load_recommendation(city)
 
 
-# market_df = load_market(city)
+market_df = load_market(city)
 
 
 
@@ -213,48 +213,22 @@ with tab1:
 
 
 
-# with tab2:
+with tab2:
 
 
-#     if analytics_df is not None:
+    if analytics_df is not None:
 
-#         analytics_page(
-#             analytics_df,
-#             wordcloud_df,
-#             city
-#         )
+        analytics_page(
+            analytics_df,
+            wordcloud_df,
+            city
+        )
 
-#     else:
+    else:
 
-#         st.info(
-#             f"Analytics not available for {city}"
-#         )
-
-
-
-
-
-
-
-
-# with tab3:
-
-
-#     if recommend_df is not None:
-
-
-#         recommendation_page(
-#             recommend_df,
-#             similarity
-#         )
-
-
-#     else:
-
-
-#         st.info(
-#             "Recommendation not available."
-#         )
+        st.info(
+            f"Analytics not available for {city}"
+        )
 
 
 
@@ -262,20 +236,46 @@ with tab1:
 
 
 
-# with tab4:
+
+with tab3:
 
 
-#     if market_df is not None:
+    if recommend_df is not None:
 
 
-#         market_trends_page(
-#             market_df
-#         )
+        recommendation_page(
+            recommend_df,
+            similarity
+        )
 
 
-    # else:
+    else:
 
 
-    #     st.info(
-    #         "Market trends not available."
-    #     )
+        st.info(
+            "Recommendation not available."
+        )
+
+
+
+
+
+
+
+with tab4:
+
+
+    if market_df is not None:
+
+
+        market_trends_page(
+            market_df
+        )
+
+
+    else:
+
+
+        st.info(
+            "Market trends not available."
+        )
