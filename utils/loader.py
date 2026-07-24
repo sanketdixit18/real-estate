@@ -91,7 +91,9 @@ import pandas as pd
 PIPELINE_URLS = {
 
     "gurgaon":
-    "https://github.com/sanketdixit18/Real-estate-app/releases/download/v1.0/pipeline.pkl"
+    "https://github.com/sanketdixit18/Real-estate-app/releases/download/v1.0/pipeline.pkl",
+    "mumbai":
+    "https://github.com/sanketdixit18/Real-estate-app/releases/download/v1.1/pipeline.pkl",
 
 }
 
