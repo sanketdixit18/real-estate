@@ -221,7 +221,7 @@ def load_prediction(city):
 # -----------------------------
 # Analytics Loader
 # -----------------------------
-
+@st.cache_data
 def load_analytics(city):
 
     city = city.lower()
@@ -274,7 +274,7 @@ def load_analytics(city):
 # -----------------------------
 # Recommendation Loader
 # -----------------------------
-
+@st.cache_resource
 def load_recommendation(city):
 
     city = city.lower()
@@ -327,7 +327,7 @@ def load_recommendation(city):
 # -----------------------------
 # Market Loader
 # -----------------------------
-
+@st.cache_data
 def load_market(city):
 
     city = city.lower()
