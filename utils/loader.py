@@ -173,6 +173,7 @@ def download_pipeline(city):
 
 
 #     return df, pipeline
+@st.cache_resource
 def load_prediction(city):
 
     city = city.lower()
